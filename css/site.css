@@ -1,0 +1,11 @@
+* {
+    font-family: 'Oswald', sans-serif;
+}
+
+p {
+    color: red;
+}
+
+input, select {
+    margin-top: 1em;
+}

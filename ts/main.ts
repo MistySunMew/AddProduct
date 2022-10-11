@@ -14,7 +14,7 @@ function $(id:string):HTMLElement {
 }
 
 function addVideoGame() {
-    console.log("addVideoGame  was called");
+    console.log("addVideoGame was called");
 
     if(isAllDataValid()) {
         let game = getVideoGame();
@@ -49,4 +49,21 @@ function getVideoGame():VideoGame {
 
 function displayGame(myGame:VideoGame):void {
     //TODO: display video game below the form
+    let displayDiv = $("display");
+
+    //Creat <h2> with game title
+    let gameHeading = document.createElement("h2");
+    gameHeading.innerText = myGame.title;
+
+    //Create paragraph with game details
+    let gameInfo = document.createElement("p");
+    let notDigitalDisplay = "You can purchase a physical copy.";
+    if(!myGame.isDigitalOnly) {
+        notDigitalDisplay = "This is a digital only game."
+    }
+    gameInfo.innerText = `${myGame.title} has a rating of ${myGame.rating}. It costs $${myGame.price}. ${notDigitalDisplay}.`
+
+    //adds info to bottom of page
+    displayDiv.appendChild(gameHeading); 
+    displayDiv.appendChild(gameInfo);
 }

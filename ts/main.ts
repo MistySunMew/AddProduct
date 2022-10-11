@@ -23,8 +23,43 @@ function addVideoGame() {
 }
 
 //TODO ADD VALIDATION CODE************************************************************************************
-function isAllDataValid() {
-    return true;
+function isAllDataValid():boolean {
+    let isAllValid:boolean = true;
+    let errorDiv = $("errors");
+
+    //Resets errors
+    while (errorDiv.hasChildNodes()) {
+        errorDiv.removeChild(errorDiv.firstChild);
+    }
+    
+    //Checks if there is anything entered in title
+    if((<HTMLInputElement>$("title")).value = "") {
+        let enterTitle = document.createElement("p");
+        enterTitle.innerText = "Please enter a game title";
+        errorDiv.appendChild = enterTitle;
+
+        isAllValid = false;
+    }
+    
+    //Checks if price is a number and if it isn't adds error message
+    if(isNaN(parseFloat((<HTMLInputElement>$("price")).value))) {
+        let enterPrice = document.createElement("p");
+        enterPrice.innerText = "Please enter a price for the game";
+        errorDiv.appendChild = enterPrice;
+
+        isAllValid = false;
+    }
+
+    //Checks if price is a number and if it isn't adds error message
+    if((<HTMLInputElement>$("rating")).value == "Please choose a rating") {
+        let chooseRating = document.createElement("p");
+        chooseRating.innerText = "Please choose a rating for the game";
+        errorDiv.appendChild = chooseRating;
+
+        isAllValid = false;
+    }    
+
+    return isAllValid;
 }
  
 /**
@@ -47,11 +82,14 @@ function getVideoGame():VideoGame {
     return game;
 }
 
+/**
+ * Displays the info inputted at the bottom of the webpage
+ * @param myGame Game to add to webpage
+ */
 function displayGame(myGame:VideoGame):void {
-    //TODO: display video game below the form
     let displayDiv = $("display");
 
-    //Creat <h2> with game title
+    //Create <h2> with game title
     let gameHeading = document.createElement("h2");
     gameHeading.innerText = myGame.title;
 

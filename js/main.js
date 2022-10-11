@@ -17,7 +17,30 @@ function addVideoGame() {
     }
 }
 function isAllDataValid() {
-    return true;
+    var isAllValid = true;
+    var errorDiv = $("errors");
+    while (errorDiv.hasChildNodes()) {
+        errorDiv.removeChild(errorDiv.firstChild);
+    }
+    if ($("title").value = "") {
+        var enterTitle = document.createElement("p");
+        enterTitle.innerText = "Please enter a game title";
+        errorDiv.appendChild = enterTitle;
+        isAllValid = false;
+    }
+    if (isNaN(parseFloat($("price").value))) {
+        var enterPrice = document.createElement("p");
+        enterPrice.innerText = "Please enter a price for the game";
+        errorDiv.appendChild = enterPrice;
+        isAllValid = false;
+    }
+    if ($("rating").value == "Please choose a rating") {
+        var chooseRating = document.createElement("p");
+        chooseRating.innerText = "Please choose a rating for the game";
+        errorDiv.appendChild = chooseRating;
+        isAllValid = false;
+    }
+    return isAllValid;
 }
 function getVideoGame() {
     var game = new VideoGame;

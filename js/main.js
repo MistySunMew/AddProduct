@@ -22,22 +22,22 @@ function isAllDataValid() {
     while (errorDiv.hasChildNodes()) {
         errorDiv.removeChild(errorDiv.firstChild);
     }
-    if ($("title").value = "") {
+    if ($("title").value == "") {
         var enterTitle = document.createElement("p");
         enterTitle.innerText = "Please enter a game title";
-        errorDiv.appendChild = enterTitle;
+        errorDiv.appendChild(enterTitle);
         isAllValid = false;
     }
     if (isNaN(parseFloat($("price").value))) {
         var enterPrice = document.createElement("p");
         enterPrice.innerText = "Please enter a price for the game";
-        errorDiv.appendChild = enterPrice;
+        errorDiv.appendChild(enterPrice);
         isAllValid = false;
     }
     if ($("rating").value == "Please choose a rating") {
         var chooseRating = document.createElement("p");
         chooseRating.innerText = "Please choose a rating for the game";
-        errorDiv.appendChild = chooseRating;
+        errorDiv.appendChild(chooseRating);
         isAllValid = false;
     }
     return isAllValid;
@@ -60,7 +60,7 @@ function displayGame(myGame) {
     if (!myGame.isDigitalOnly) {
         notDigitalDisplay = "This is a digital only game.";
     }
-    gameInfo.innerText = "".concat(myGame.title, " has a rating of ").concat(myGame.rating, ". It costs $").concat(myGame.price, ". ").concat(notDigitalDisplay, ".");
+    gameInfo.innerText = "".concat(myGame.title, " has a rating of ").concat(myGame.rating, ". It costs $").concat(myGame.price, ". ").concat(notDigitalDisplay);
     displayDiv.appendChild(gameHeading);
     displayDiv.appendChild(gameInfo);
 }

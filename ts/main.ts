@@ -22,7 +22,7 @@ function addVideoGame() {
     }
 }
 
-//TODO ADD VALIDATION CODE************************************************************************************
+//TODO: fix adding errors to log
 function isAllDataValid():boolean {
     let isAllValid:boolean = true;
     let errorDiv = $("errors");
@@ -33,10 +33,10 @@ function isAllDataValid():boolean {
     }
     
     //Checks if there is anything entered in title
-    if((<HTMLInputElement>$("title")).value = "") {
+    if((<HTMLInputElement>$("title")).value == "") {
         let enterTitle = document.createElement("p");
         enterTitle.innerText = "Please enter a game title";
-        errorDiv.appendChild = enterTitle;
+        errorDiv.appendChild(enterTitle);
 
         isAllValid = false;
     }
@@ -45,7 +45,7 @@ function isAllDataValid():boolean {
     if(isNaN(parseFloat((<HTMLInputElement>$("price")).value))) {
         let enterPrice = document.createElement("p");
         enterPrice.innerText = "Please enter a price for the game";
-        errorDiv.appendChild = enterPrice;
+        errorDiv.appendChild(enterPrice);
 
         isAllValid = false;
     }
@@ -54,7 +54,7 @@ function isAllDataValid():boolean {
     if((<HTMLInputElement>$("rating")).value == "Please choose a rating") {
         let chooseRating = document.createElement("p");
         chooseRating.innerText = "Please choose a rating for the game";
-        errorDiv.appendChild = chooseRating;
+        errorDiv.appendChild(chooseRating);
 
         isAllValid = false;
     }    
@@ -99,7 +99,7 @@ function displayGame(myGame:VideoGame):void {
     if(!myGame.isDigitalOnly) {
         notDigitalDisplay = "This is a digital only game."
     }
-    gameInfo.innerText = `${myGame.title} has a rating of ${myGame.rating}. It costs $${myGame.price}. ${notDigitalDisplay}.`
+    gameInfo.innerText = `${myGame.title} has a rating of ${myGame.rating}. It costs $${myGame.price}. ${notDigitalDisplay}`;
 
     //adds info to bottom of page
     displayDiv.appendChild(gameHeading); 

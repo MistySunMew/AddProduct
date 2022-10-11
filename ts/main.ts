@@ -13,8 +13,12 @@ function $(id:string):HTMLElement {
     return document.getElementById(id)
 }
 
+/**
+ * Checks if the data is valid by calling isAllDataValid() and
+ * if it is it sends it to displayGame()
+ */
 function addVideoGame() {
-    console.log("addVideoGame was called");
+    //console.log("addVideoGame was called");
 
     if(isAllDataValid()) {
         let game = getVideoGame();
@@ -22,7 +26,10 @@ function addVideoGame() {
     }
 }
 
-//TODO: fix adding errors to log
+/**
+ * Checks the input to see if the data is valid
+ * @returns if data is valid
+ */
 function isAllDataValid():boolean {
     let isAllValid:boolean = true;
     let errorDiv = $("errors");
@@ -95,9 +102,9 @@ function displayGame(myGame:VideoGame):void {
 
     //Create paragraph with game details
     let gameInfo = document.createElement("p");
-    let notDigitalDisplay = "You can purchase a physical copy.";
+    let notDigitalDisplay = "This is a digital only game.";
     if(!myGame.isDigitalOnly) {
-        notDigitalDisplay = "This is a digital only game."
+        notDigitalDisplay = "You can purchase a physical copy."
     }
     gameInfo.innerText = `${myGame.title} has a rating of ${myGame.rating}. It costs $${myGame.price}. ${notDigitalDisplay}`;
 
